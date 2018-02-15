@@ -17,7 +17,21 @@
         <p data-bind="text: level"></p>
         <p data-bind="text: clickCount"></p>
         <img src="" alt="cute cat" data-bind="click: incrementCounter, attr: {src: imgSrc}">
+        <p>Nicknames for <span data-bind="text: name"></span>:</p>
+        <ul data-bind="foreach: altNames">
 
+            <li>
+                <!-- If the altNames observableArray was just an array of strings
+                     then the data-bind below would need to use 'text: $data'
+                     which gives the actual data in the array that you are looping
+                     over. This is good for cases where the data is super simple.
+                     When the data is more complicated, the observableArray should
+                     be filled with objects and the 'keys' can simply be called
+                     like it is below. 
+                -->
+                <span data-bind="text: nickname"></span>
+            </li>
+        </ul>
     </div>
     <script src="js/lib/knockout-3.2.0.js"></script>
     <script src="js/app.js"></script>

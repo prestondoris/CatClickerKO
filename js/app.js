@@ -1,22 +1,30 @@
 var ViewModel = function() {
-    this.clickCount = ko.observable(0);
-    this.name = ko.observable('Tabby');
-    this.imgSrc = ko.observable('img/434164568_fea0ad4013_z.jpg');
-    this.imgAttribution = ko.observable('https://www.flickr.com/photos/big');
-    this.level =ko.computed(function() {
-        if (this.clickCount() < 10) {
+    var self = this;
+
+    self.clickCount = ko.observable(0);
+    self.name = ko.observable('Tabby');
+    self.imgSrc = ko.observable('img/434164568_fea0ad4013_z.jpg');
+    self.imgAttribution = ko.observable('https://www.flickr.com/photos/big');
+    self.level =ko.computed(function() {
+        if (self.clickCount() < 10) {
             return 'Newborn';
-        } else if (this.clickCount() >=10 && this.clickCount() < 100) {
+        } else if (self.clickCount() >=10 && self.clickCount() < 100) {
             return "Infant";
-        } else if (this.clickCount() >= 100 && this.clickCount() <200) {
+        } else if (self.clickCount() >= 100 && self.clickCount() <200) {
             return "Teen";
-        } else if (this.clickCount() >= 200){
+        } else if (self.clickCount() >= 200){
             return "Adult";
         }
-    }, this);
+    }, self);
 
-    this.incrementCounter = function() {
-        this.clickCount(this.clickCount()+1);
+    self.altNames = ko.observableArray([
+        {nickname: 'Muffin'},
+        {nickname: 'Ginger'},
+        {nickname: 'Lady'}
+    ]);
+
+    self.incrementCounter = function() {
+        self.clickCount(self.clickCount()+1);
     };
 }
 
