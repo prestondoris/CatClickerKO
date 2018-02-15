@@ -1,4 +1,4 @@
-var ViewModel = function() {
+var Cat = function() {
     var self = this;
 
     self.clickCount = ko.observable(0);
@@ -22,9 +22,15 @@ var ViewModel = function() {
         {nickname: 'Ginger'},
         {nickname: 'Lady'}
     ]);
+}
+
+var ViewModel = function() {
+    var self = this;
+
+    self.currentCat = ko.observable(new Cat());
 
     self.incrementCounter = function() {
-        self.clickCount(self.clickCount()+1);
+        self.currentCat().clickCount(self.currentCat().clickCount()+1);
     };
 }
 

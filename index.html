@@ -13,12 +13,13 @@
         we want the text of the H2 to be the name of the cat. KO's binding is
         text: name
         -->
-        <h2 data-bind="text: name"></h2>
-        <p data-bind="text: level"></p>
-        <p data-bind="text: clickCount"></p>
-        <img src="" alt="cute cat" data-bind="click: incrementCounter, attr: {src: imgSrc}">
-        <p>Nicknames for <span data-bind="text: name"></span>:</p>
-        <ul data-bind="foreach: altNames">
+        <h2 data-bind="text: currentCat().name"></h2>
+        <p data-bind="text: currentCat().level"></p>
+        <p data-bind="text: currentCat().clickCount"></p>
+        <img src="" alt="cute cat" data-bind="click: incrementCounter,
+        attr: {src: currentCat().imgSrc}">
+        <p>Nicknames for <span data-bind="text: currentCat().name"></span>:</p>
+        <ul data-bind="foreach: currentCat().altNames">
 
             <li>
                 <!-- If the altNames observableArray was just an array of strings
@@ -27,7 +28,7 @@
                      over. This is good for cases where the data is super simple.
                      When the data is more complicated, the observableArray should
                      be filled with objects and the 'keys' can simply be called
-                     like it is below. 
+                     like it is below.
                 -->
                 <span data-bind="text: nickname"></span>
             </li>
